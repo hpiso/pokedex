@@ -13,7 +13,10 @@
 			<tr>
         <td><%= pokemon.id %></td>
 				<td><%= pokemon.name %></td>
-        <td><%= link_to 'Afficher', pokemon, class: 'btn btn-primary' %></td>
+        <td>
+          <%= link_to 'Afficher', pokemon, class: 'btn btn-primary' %>
+          <%= link_to 'Editer', edit_pokemon_path(pokemon), class: 'btn btn-warning' %>
+        </td>
 			</tr>
 		<% end %>
 	</tbody>
@@ -22,4 +25,6 @@
 <% else %>
 <p>Il n'y a pas de pokemons</p>
 <% end %>
+
+<%= link_to 'Ajouter', new_pokemon_path, class: 'btn btn-primary' %>
 

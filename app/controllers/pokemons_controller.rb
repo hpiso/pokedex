@@ -10,7 +10,7 @@ class PokemonsController < ApplicationController
   end
 
   def new
-    @pokemons = Pokemon.new
+    @pokemon = Pokemon.new
   end
 
   def create
