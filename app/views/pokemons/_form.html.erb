@@ -1,0 +1,13 @@
+<div class="row">
+
+
+
+<%= form_for @pokemon do |f| %>
+    <div class="form-group col-lg-4">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class:'form-control' %>
+      <%= f.submit 'Ajouter', class:'btn btn-primary', style:'margin-top:20px;' %>
+    </div>
+
+<% end %>
+</div>
