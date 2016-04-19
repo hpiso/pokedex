@@ -6,13 +6,18 @@
   <tr>
     <th>#</th>
     <th>Name</th>
+    <th>Level</th>
+    <th>Health</th>
+    <th>Actions</th>
   </tr>
   </thead>
 	<tbody>
 		<% @pokemons.each do |pokemon| %>
 			<tr>
-        <td><%= pokemon.id %></td>
+        <td><%= pokemon.number %></td>
 				<td><%= pokemon.name %></td>
+        <td><%= pokemon.level %></td>
+        <td><%= pokemon.health_points %></td>
         <td>
           <%= link_to 'Afficher', pokemon, class: 'btn btn-primary' %>
           <%= link_to 'Editer', edit_pokemon_path(pokemon), class: 'btn btn-warning' %>
