@@ -16,6 +16,14 @@
         <td>
           <%= link_to 'Afficher', pokemon, class: 'btn btn-primary' %>
           <%= link_to 'Editer', edit_pokemon_path(pokemon), class: 'btn btn-warning' %>
+          <%= link_to 'Supprimer', pokemon,
+                      method: :delete,
+                      data: {
+                          confirm: "Etes vous sur de vouloir supprimer ce Pokemon ?"
+                      },
+                      class: 'btn btn-danger'
+
+          %>
         </td>
 			</tr>
 		<% end %>
