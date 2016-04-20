@@ -8,6 +8,7 @@
     <th>Name</th>
     <th>Level</th>
     <th>Health</th>
+    <th>Type</th>
     <th>Actions</th>
   </tr>
   </thead>
@@ -18,6 +19,13 @@
 				<td><%= pokemon.name %></td>
         <td><%= pokemon.level %></td>
         <td><%= pokemon.health_points %></td>
+        <td>
+          <% if pokemon.type.nil? %>
+            <p>Non défini</p>
+          <% else %>
+                <%= type_badge(pokemon.type.name, pokemon.type.color) %>
+          <% end %>
+        </td>
         <td>
           <%= link_to 'Afficher', pokemon, class: 'btn btn-primary' %>
           <%= link_to 'Editer', edit_pokemon_path(pokemon), class: 'btn btn-warning' %>
@@ -38,6 +46,8 @@
 <% else %>
 <p>Il n'y a pas de pokemons</p>
 <% end %>
-
-<%= link_to 'Ajouter', new_pokemon_path, class: 'btn btn-primary' %>
+<p>
+  <%= link_to 'Ajouter', new_pokemon_path, class: 'btn btn-primary' %>
+</p>
+<%= will_paginate @pokemons, renderer: BootstrapPagination::Rails %>
 
