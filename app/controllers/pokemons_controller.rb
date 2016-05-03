@@ -3,7 +3,7 @@ class PokemonsController < ApplicationController
   before_action :set_pokemon, only: [:show, :edit, :update, :destroy]
 
   def index
-    @pokemons = Pokemon.paginate(page: params[:page], per_page:2)
+    @pokemons = Pokemon.paginate(page: params[:page], per_page:10)
                        .includes(:type)
   end
 
@@ -48,7 +48,8 @@ class PokemonsController < ApplicationController
         :number,
         :level,
         :health_points,
-        :type_id
+        :type_id,
+        move_ids:[],
     )
   end
 

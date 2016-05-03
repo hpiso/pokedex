@@ -1,0 +1,5 @@
+<% if moves.any? %>
+    <%= moves.map(&:name).join(', ') %>
+<% else %>
+    <p>Pas d'attaque</p>
+<% end %>

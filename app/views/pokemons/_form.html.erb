@@ -11,6 +11,11 @@
 
         <%= f.association :type, label:'Type', class:'form-control' %>
 
+        <%= f.association :moves, label:'Moves',
+                                  as: :check_boxes,
+                                  item_wrapper_tag: :label,
+                                  item_wrapper_class: 'checkbox-inline'%>
+
         <%= f.submit 'Ajouter', class:'btn btn-primary', style:'margin-top:20px;' %>
       </div>
   <% end %>
