@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420130034) do
+ActiveRecord::Schema.define(version: 20160503153831) do
+
+  create_table "moves", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "type_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "moves", ["type_id"], name: "index_moves_on_type_id"
 
   create_table "pokemons", force: :cascade do |t|
     t.string  "name"

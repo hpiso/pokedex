@@ -25,7 +25,6 @@ class PokemonsController < ApplicationController
   end
 
   def edit
-
   end
 
   def update
@@ -56,7 +55,5 @@ class PokemonsController < ApplicationController
   def set_pokemon
     @pokemon = Pokemon.find params[:id]
   end
-
-
 
 end
