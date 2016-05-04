@@ -21,11 +21,7 @@
         <td><%= pokemon.level %></td>
         <td><%= pokemon.health_points %></td>
         <td>
-          <% if pokemon.type.nil? %>
-            <p>Non défini</p>
-          <% else %>
-                <%= type_badge(pokemon.type.name, pokemon.type.color) %>
-          <% end %>
+          <%= render partial: 'types/type', locals: { type: pokemon.type} %>
         </td>
         <td>
           <%= render partial: 'moves/moves_list', locals: { moves: pokemon.moves} %>
