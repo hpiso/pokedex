@@ -5,13 +5,39 @@
   <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pokedex</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <% unless Rails.application.assets.find_asset("#{controller_name}.css").nil? %>
+      <%= stylesheet_link_tag controller_name, media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
+
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <% unless Rails.application.assets.find_asset("#{controller_name}.js").nil? %>
+      <%= javascrip_include_tag controller_name, media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
+
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= "#{controller_name}-#{action_name}" %>">
 
 <div class="container">
+  <header>
+    <% flash.each do |name, msg| %>
+        <div class="alert alter-<%= name %>"></div>
+        <a href="" class="close" data-dismiss="alert">x</a>
+        <%= content_tag :div, msg, id: "flash_#{name}" %>
+    <% end %>
+
+    <% if user_signed_in? %>
+        <p>
+          Connecté en tant que <%= current_user.user %>
+          <%= link_to "Se deconnecter", destroy_user_session_path, method: :delete, class: btn %>
+        </p>
+    <% else %>
+        <%= link_to "Se connecter", new_user_session_path %>
+    <% end %>
+
+
+  </header>
   <%= yield %>
 </div>
 
